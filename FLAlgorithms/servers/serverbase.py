@@ -153,7 +153,7 @@ class ServerBase:
         losses = []
         users = self.selected_users if selected else self.users
         for c in users:
-            ct, c_loss, ns = c.test()
+            ct, c_loss, ns = c.test()   # 调用的是userbase的test
             tot_correct.append(ct * 1.0)
             num_samples.append(ns)
             losses.append(c_loss)

@@ -14,6 +14,7 @@ class UserAVG(UserBase):
         del self.label_counts
         self.label_counts = {int(label): 1 for label in range(self.unique_labels)}
 
+    # 训练每一个选中的user，这个函数循环调用，类似于FedAvg的代码段
     def train(self, glob_iter, personalized=False, lr_decay=True, count_labels=True):
         self.clean_up_counts()
         self.model.train()
