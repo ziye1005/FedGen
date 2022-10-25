@@ -4,7 +4,7 @@ import numpy as np
 from FLAlgorithms.users.userbase import UserBase
 
 
-class UserpFedGen(UserBase):
+class UserFedGen(UserBase):
     def __init__(self,
                  args, id, model, generative_model,
                  train_data, test_data,

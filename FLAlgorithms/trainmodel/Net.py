@@ -1,13 +1,10 @@
 import torch.nn as nn
 import torch.nn.functional as F
 from utils.model_config import CONFIGS_
-
 import collections
 
 
-#################################
 # Neural Network model #####
-#################################
 class Net(nn.Module):
     def __init__(self, dataset='mnist', model='cnn'):
         super(Net, self).__init__()

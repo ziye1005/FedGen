@@ -4,7 +4,7 @@ from FLAlgorithms.servers.serveravg import FedAvg
 from FLAlgorithms.servers.serverFedProx import FedProx
 from FLAlgorithms.servers.serverFedDistill import FedDistill
 from FLAlgorithms.servers.serverpFedGen import FedGen
-from FLAlgorithms.servers.serverpFedEnsemble import FedEnsemble
+from FLAlgorithms.servers.serverFedEnsemble import FedEnsemble
 from utils.model_utils import create_model
 from utils.plot_utils import *
 import torch
@@ -14,15 +14,15 @@ from multiprocessing import Pool
 def create_server_n_user(args, i):
     model = create_model(args.model, args.dataset, args.algorithm)
     # model是cnn,dataset是Mnist-alpha0.1-ratio0.1，EMnist-alpha0.1-ratio0.1，algorithm无用
-    if ('FedAvg' in args.algorithm):
+    if 'FedAvg' in args.algorithm:
         server = FedAvg(args, model, i)
     elif 'FedGen' in args.algorithm:
         server = FedGen(args, model, i)
-    elif ('FedProx' in args.algorithm):
+    elif 'FedProx' in args.algorithm:
         server = FedProx(args, model, i)
-    elif ('FedDistill' in args.algorithm):
+    elif 'FedDistill' in args.algorithm:
         server = FedDistill(args, model, i)
-    elif ('FedEnsemble' in args.algorithm):
+    elif 'FedEnsemble' in args.algorithm:
         server = FedEnsemble(args, model, i)
     else:
         print("Algorithm {} has not been implemented.".format(args.algorithm))
@@ -49,10 +49,10 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", type=str, default="Mnist")
+    parser.add_argument("--dataset", type=str, default="Mnist-alpha0.1-ratio0.5")
     parser.add_argument("--model", type=str, default="cnn")
     parser.add_argument("--train", type=int, default=1, choices=[0, 1])  # 这个不用管，是1才能开始训练
-    parser.add_argument("--algorithm", type=str, default="FedGen")
+    parser.add_argument("--algorithm", type=str, default="FedAvg")
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--gen_batch_size", type=int, default=32, help='number of samples from generator')
     parser.add_argument("--learning_rate", type=float, default=0.01, help="Local learning rate")
@@ -64,9 +64,9 @@ if __name__ == "__main__":
     parser.add_argument("--lamda", type=int, default=1, help="Regularization term")
     parser.add_argument("--mix_lambda", type=float, default=0.1, help="Mix lambda for FedMXI baseline")
     parser.add_argument("--embedding", type=int, default=0, help="Use embedding layer in generator network")
-    parser.add_argument("--num_glob_iters", type=int, default=200)
-    parser.add_argument("--local_epochs", type=int, default=20)
-    parser.add_argument("--num_users", type=int, default=20, help="Number of Users per round")
+    parser.add_argument("--num_glob_iters", type=int, default=10)
+    parser.add_argument("--local_epochs", type=int, default=5)
+    parser.add_argument("--num_users", type=int, default=10, help="Number of Users per round")
     parser.add_argument("--K", type=int, default=1, help="Computation steps")
     parser.add_argument("--times", type=int, default=3, help="running time")  # 运行次数，进行times次的训练和测试
     parser.add_argument("--device", type=str, default="cuda", choices=["cpu", "cuda"], help="run device (cpu | cuda)")
