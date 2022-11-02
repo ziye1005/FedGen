@@ -114,27 +114,32 @@ class ServerBase:
         return os.path.exists(os.path.join("models", self.dataset, "server" + ".pt"))
 
     def select_users(self, round, num_users, return_idx=False):
-        '''selects num_clients clients weighted by number of samples from possible_clients
+        """
+        selects num_users clients weighted by number of samples from possible_clients
         Args:
-            num_clients: number of clients to select; default 20
+            num_users: number of clients to select; default 10
                 note that within function, num_clients is set to
-                min(num_clients, len(possible_clients))
+                min(num_users, len(possible_clients))
         Return:
             list of selected clients objects
-        '''
-        if (num_users == len(self.users)):
+        """
+        if num_users == len(self.users):
+            # 这个在serverFedGen.init里面已经存放了全部20个user
             print("All users are selected")
             return self.users
 
-        num_users = min(num_users, len(self.users))
+        num_users = min(num_users, len(self.users))     # 防止超出，需要取小
         if return_idx:
+            # 从len(self.users))里面随机取num_users个数字并组成一维数组，replace=False 表示取出来的数字不可重复
             user_idxs = np.random.choice(range(len(self.users)), num_users, replace=False)  # , p=pk)
             return [self.users[i] for i in user_idxs], user_idxs
+        # 返回的第一个是选择的10个users的信息，第二个是这10个users的index
         else:
             return np.random.choice(self.users, num_users, replace=False)
 
     def init_loss_fn(self):
         self.loss = nn.NLLLoss()
+        # batchmean表示使用的N*mean
         self.ensemble_loss = nn.KLDivLoss(reduction="batchmean")  # ,log_target=True)
         self.ce_loss = nn.CrossEntropyLoss()
 

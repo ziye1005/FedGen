@@ -30,13 +30,13 @@ class FedAvg(ServerBase):
         print("Finished creating FedAvg server.")
     # FedAvg的模型训练，
     # 1.循环num_glob_iters次训练：随机选择num_users个用户，先对全部user进行evaluate，获得metrics['glob_acc']，metrics['glob_loss']
-    #       2.循环num_users个用户：进行训练useravg的train,ClientUpdate函数更新每个user的权重
+    #       2.循环num_users个用户：进行训练useravg的train,类似于ClientUpdate函数更新每个user的权重
     #   计算训练um_users的平均时间 metrics['user_train_time']
     #   server进行模型聚合，计算模型聚合的时间 metrics['server_agg_time']
 
     def train(self, args):
         for glob_iter in range(self.num_glob_iters):
-            print("\n\n-------------Round number: ", glob_iter, " -------------\n\n")
+            print("\n\n-------------Round number FedAvg: ", glob_iter, " -------------\n\n")
             self.selected_users = self.select_users(glob_iter, self.num_users)
             # 随机选择num_users个用户
             self.send_parameters(mode=self.mode)

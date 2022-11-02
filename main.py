@@ -3,7 +3,7 @@ import argparse
 from FLAlgorithms.servers.serveravg import FedAvg
 from FLAlgorithms.servers.serverFedProx import FedProx
 from FLAlgorithms.servers.serverFedDistill import FedDistill
-from FLAlgorithms.servers.serverpFedGen import FedGen
+from FLAlgorithms.servers.serverFedGen import FedGen
 from FLAlgorithms.servers.serverFedEnsemble import FedEnsemble
 from utils.model_utils import create_model
 from utils.plot_utils import *
@@ -52,9 +52,9 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", type=str, default="Mnist-alpha0.1-ratio0.5")   # 使用的数据集，需要先使用指令下载
     parser.add_argument("--model", type=str, default="cnn")     # 只有cnn，如果用MLP效果不如cnn
     parser.add_argument("--train", type=int, default=1, choices=[0, 1])  # 这个不用管，是1才能开始训练
-    parser.add_argument("--algorithm", type=str, default="FedAvg")  # 可以输入的是，FedAvg，FedProx，FedDistill，FedEnsemble，FedGen
+    parser.add_argument("--algorithm", type=str, default="FedGen")  # 可以输入的是，FedAvg，FedProx，FedDistill，FedEnsemble，FedGen
     parser.add_argument("--batch_size", type=int, default=32)   # 一次训练所抓取的数据样本数量
-    parser.add_argument("--gen_batch_size", type=int, default=32, help='number of samples from generator')
+    parser.add_argument("--gen_batch_size", type=int, default=32, help='number of samples from generator')  # 生成器一次所抓取的样本数量
     parser.add_argument("--learning_rate", type=float, default=0.01, help="Local learning rate")
     parser.add_argument("--personal_learning_rate", type=float, default=0.01,
                         help="Personalized learning rate to calculate theta approximately using K steps")
@@ -64,8 +64,8 @@ if __name__ == "__main__":
     parser.add_argument("--lamda", type=int, default=1, help="Regularization term")     # 正则化
     parser.add_argument("--mix_lambda", type=float, default=0.1, help="Mix lambda for FedMXI baseline")
     parser.add_argument("--embedding", type=int, default=0, help="Use embedding layer in generator network")
-    parser.add_argument("--num_glob_iters", type=int, default=10)   # 训练的次数
-    parser.add_argument("--local_epochs", type=int, default=5)
+    parser.add_argument("--num_glob_iters", type=int, default=10)   # 训练的次数，外循环，在serverFedGen里面
+    parser.add_argument("--local_epochs", type=int, default=5)      # 对选中的每个user，进行local_epochs次训练，在userFedGen里面
     parser.add_argument("--num_users", type=int, default=10, help="Number of Users per round")  # 选中的用户数量
     parser.add_argument("--K", type=int, default=1, help="Computation steps")
     parser.add_argument("--times", type=int, default=3, help="running time")  # 运行次数，进行times次的训练和测试

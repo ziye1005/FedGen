@@ -205,6 +205,7 @@ def get_dataset_name(dataset):
     return passed_dataset
 
 
+# 生成产生式模型
 def create_generative_model(dataset, algorithm='', model='cnn', embedding=False):
     passed_dataset = get_dataset_name(dataset)
     assert any([alg in algorithm for alg in ['FedGen', 'FedGen']])
