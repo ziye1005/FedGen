@@ -17,7 +17,7 @@ It contains implementation of the following algorithms:
 python generate_niid_dirichlet.py --n_class 10 --sampling_ratio 0.5 --alpha 0.1 --n_user 20
 ### This will generate a dataset located at FedGen/data/Mnist/u20c10-alpha0.1-ratio0.5/
 </code></pre>
-    
+
 
 - Similarly, to generate *non-iid* **EMnist** Dataset, using 10% of the total available training samples:
 <pre><code>cd FedGen/data/EMnist
