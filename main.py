@@ -49,7 +49,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", type=str, default="Mnist-alpha0.1-ratio0.5")   # 使用的数据集，需要先使用指令下载
+    parser.add_argument("--dataset", type=str, default="EMnist-alpha0.1-ratio0.1")   # 使用的数据集，需要先使用指令下载
+    # EMnist-alpha0.1-ratio0.1 Mnist-alpha0.1-ratio0.5
     parser.add_argument("--model", type=str, default="cnn")     # 只有cnn，如果用MLP效果不如cnn
     parser.add_argument("--train", type=int, default=1, choices=[0, 1])  # 这个不用管，是1才能开始训练
     parser.add_argument("--algorithm", type=str, default="FedGen")  # 可以输入的是，FedAvg，FedProx，FedDistill，FedEnsemble，FedGen
@@ -67,8 +68,8 @@ if __name__ == "__main__":
     parser.add_argument("--num_glob_iters", type=int, default=10)   # 训练的次数，外循环，在serverFedGen里面
     parser.add_argument("--local_epochs", type=int, default=5)      # 对选中的每个user，进行local_epochs次训练，在userFedGen里面
     parser.add_argument("--num_users", type=int, default=10, help="Number of Users per round")  # 选中的用户数量
-    parser.add_argument("--K", type=int, default=1, help="Computation steps")
-    parser.add_argument("--times", type=int, default=3, help="running time")  # 运行次数，进行times次的训练和测试
+    parser.add_argument("--K", type=int, default=1, help="Computation steps")    # 在userFedGen里面的一次计算的循环
+    parser.add_argument("--times", type=int, default=10, help="running time")  # 运行次数，进行times次的训练和测试
     parser.add_argument("--device", type=str, default="cuda", choices=["cpu", "cuda"], help="run device (cpu | cuda)")  # 可选cpu和cuda
     parser.add_argument("--result_path", type=str, default="results", help="directory path to save results")    # 结果输出路径
 

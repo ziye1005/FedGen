@@ -1,0 +1,42 @@
+[
+  {"label":"病名",
+  "labellist":[
+    {
+      "standardName":"外感病类术语",
+      "otherNameList":["外感病类术语","外感病"]
+    },{
+      "standardName":"外感时令类病",
+      "otherNameList":["外感时令类病","时令病"]
+    },{
+      "standardName":"感冒",
+      "otherNameList":["感冒"]
+    }
+  ]
+  },
+  {"label":"证候",
+  "labellist":[
+    {"standardName":"病因证候类",
+      "otherNameList":["病因证候类","病因证候类术语"]
+    },
+    {"standardName":"风邪外袭证",
+      "otherNameList":["风邪乘袭证","风邪外侵证", "风邪侵袭证", "外感风邪证"]
+    },
+     {"standardName":"风邪外袭，经气痞塞证",
+      "otherNameList":["风邪中经证","风中经络证", "风邪外袭，经气痞塞证"]
+    }
+  ]
+  },
+  {"label":"治法",
+  "labellist":[
+    {"standardName":"治则类术语",
+      "otherNameList":["治则类术语"]
+    },
+    {"standardName":"已病防变",
+      "otherNameList":["既病防变","已病防变"]
+    },
+     {"standardName":"调理阴阳",
+      "otherNameList":["调理阴阳","调平阴阳", "调整阴阳"]
+    }
+  ]
+  }
+]

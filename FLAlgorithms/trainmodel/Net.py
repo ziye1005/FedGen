@@ -88,7 +88,7 @@ class Net(nn.Module):
     def get_learnable_params(self):
         return self.get_encoder() + self.get_decoder()
 
-    def forward(self, x, start_layer_idx=0, logit=False):
+    def forward(self, x, start_layer_idx=0, logit=False, temperature=1):
         """
         :param x:
         :param logit: return logit vector before the last softmax layer
@@ -105,21 +105,21 @@ class Net(nn.Module):
             z = layer(z)
 
         if self.output_dim > 1:
-            restults['output'] = F.log_softmax(z, dim=1)
+            restults['output'] = F.log_softmax(z / temperature, dim=1)
         else:
             restults['output'] = z
         if logit:
             restults['logit'] = z
         return restults
 
-    def mapping(self, z_input, start_layer_idx=-1, logit=True):
+    def mapping(self, z_input, start_layer_idx=-1, logit=True, temperature=1):
         z = z_input
         n_layers = len(self.layers)
         for layer_idx in range(n_layers + start_layer_idx, n_layers):
             layer = self.layers[layer_idx]
             z = layer(z)
         if self.output_dim > 1:
-            out = F.log_softmax(z, dim=1)
+            out = F.log_softmax(z / temperature, dim=1)
         result = {'output': out}
         if logit:
             result['logit'] = z

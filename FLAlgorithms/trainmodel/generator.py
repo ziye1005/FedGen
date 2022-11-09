@@ -73,7 +73,7 @@ class Generator(nn.Module):
             # labels = labels.view
             y_input.scatter_(1, labels.view(-1, 1), 1)
         z = torch.cat((eps, y_input), dim=1)
-        ### FC layers
+        # FC layers
         for layer in self.fc_layers:
             z = layer(z)
         z = self.representation_layer(z)
@@ -91,45 +91,6 @@ class Generator(nn.Module):
         return (layer - mean) / std
 
 
-#
-# class Decoder(nn.Module):
-#     """
-#     Decoder for both unstructured and image datasets.
-#     """
-#     def __init__(self, dataset='mnist', latent_layer_idx=-1, n_layers=2, units=32):
-#         """
-#         Class initializer.
-#         """
-#         #in_features, out_targets, n_layers=2, units=32):
-#         super(Decoder, self).__init__()
-#         self.cv_configs, self.input_channel, self.n_class, self.scale, self.noise_dim = GENERATORCONFIGS[dataset]
-#         self.hidden_dim = self.scale * self.scale * self.cv_configs[0]
-#         self.latent_dim = self.cv_configs[0] * 2
-#         self.represent_dims = [self.hidden_dim, self.latent_dim]
-#         in_features = self.represent_dims[latent_layer_idx]
-#         out_targets = self.noise_dim
-#
-#         # build layer structure
-#         layers = [nn.Linear(in_features, units),
-#                   nn.ELU(),
-#                   nn.BatchNorm1d(units)]
-#
-#         for _ in range(n_layers):
-#             layers.extend([
-#                 nn.Linear(units, units),
-#                 nn.ELU(),
-#                 nn.BatchNorm1d(units)])
-#
-#         layers.append(nn.Linear(units, out_targets))
-#         self.layers = nn.Sequential(*layers)
-#
-#     def forward(self, x):
-#         """
-#         Forward propagation.
-#         """
-#         out = x.view((x.size(0), -1))
-#         out = self.layers(out)
-#         return out
 
 class DivLoss(nn.Module):
     """

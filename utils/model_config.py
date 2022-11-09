@@ -1,5 +1,5 @@
 CONFIGS_ = {
-    # input_channel, n_class, hidden_dim, latent_dim
+    # input_channel, n_class, output_dim, hidden_dim, latent_dim
     'cifar': ([16, 'M', 32, 'M', 'F'], 3, 10, 2048, 64),
     'cifar100-c25': ([32, 'M', 64, 'M', 128, 'F'], 3, 25, 128, 128),
     'cifar100-c30': ([32, 'M', 64, 'M', 128, 'F'], 3, 30, 2048, 128),

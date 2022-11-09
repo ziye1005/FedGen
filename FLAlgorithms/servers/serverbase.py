@@ -45,7 +45,7 @@ class ServerBase:
         self.ensemble_batch_size = RUNCONFIGS[dataset_name].get('ensemble_batch_size', 128)
         self.ensemble_epochs = RUNCONFIGS[dataset_name]['ensemble_epochs']
         self.num_pretrain_iters = RUNCONFIGS[dataset_name]['num_pretrain_iters']
-        self.temperature = RUNCONFIGS[dataset_name].get('temperature', 1)
+        self.temperature = RUNCONFIGS[dataset_name].get('temperature', 10)
         self.unique_labels = RUNCONFIGS[dataset_name]['unique_labels']
         self.ensemble_alpha = RUNCONFIGS[dataset_name].get('ensemble_alpha', 1)
         self.ensemble_beta = RUNCONFIGS[dataset_name].get('ensemble_beta', 0)

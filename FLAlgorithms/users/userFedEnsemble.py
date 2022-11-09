@@ -91,7 +91,7 @@ class UserFedEnsemble(UserBase):
             for i in range(self.K):
                 loss = 0
                 self.optimizer.zero_grad()
-                #### sample from real dataset (un-weighted)
+                # sample from real dataset (un-weighted)
                 samples = self.get_next_train_batch(count_labels=True)
                 X, y = samples['X'], samples['y']
                 self.update_label_counts(samples['labels'], samples['counts'])
@@ -99,7 +99,7 @@ class UserFedEnsemble(UserBase):
                 output = model_result['output']
                 predictive_loss = self.loss(output, y)
                 loss += predictive_loss
-                #### sample from generator and regulate Dist|z_gen, z_pred|, where z_gen = Gen(x, y), z_pred = model(X)
+                # sample from generator and regulate Dist|z_gen, z_pred|, where z_gen = Gen(x, y), z_pred = model(X)
                 if reconstruct:
                     gen_result = self.generative_model(X, y, latent=True)
                     z_gen = gen_result['latent']
@@ -107,7 +107,7 @@ class UserFedEnsemble(UserBase):
                     dist_loss = self.generative_beta * self.dist_loss(z_model, z_gen)
                     DIST_LOSS += dist_loss
                     loss += dist_loss
-                #### get loss and perform optimization
+                # get loss and perform optimization
                 loss.backward()
                 self.optimizer.step()  # self.local_model)
 

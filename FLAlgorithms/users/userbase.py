@@ -65,6 +65,7 @@ class UserBase:
         self.dist_loss = nn.MSELoss()
         self.ensemble_loss = nn.KLDivLoss(reduction="batchmean")
         self.ce_loss = nn.CrossEntropyLoss()
+        self.soft_loss = nn.KLDivLoss(reduction="batchmean")
 
     def set_parameters(self, model, beta=1):
         for old_param, new_param, local_param in zip(self.model.parameters(), model.parameters(), self.local_model):

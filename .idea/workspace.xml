@@ -2,35 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d76dd86-1a27-4d2c-83cd-6a3e9b017e75" name="Changes" comment="提交很多">
-      <change afterPath="$PROJECT_DIR$/.idea/FedGenSxq.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha0.1-ratio0.1/test/test.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha0.1-ratio0.1/train/train.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/data/MNIST/raw/t10k-images-idx3-ubyte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/data/MNIST/raw/t10k-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/data/MNIST/raw/t10k-labels-idx1-ubyte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/data/MNIST/raw/t10k-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/data/MNIST/raw/train-images-idx3-ubyte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/data/MNIST/raw/train-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/data/MNIST/raw/train-labels-idx1-ubyte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/data/MNIST/raw/train-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/u20c10-alpha0.1-ratio0.5/test/test.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Mnist/u20c10-alpha0.1-ratio0.5/train/train.pt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/entityAlign.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/Mnist-alpha0.1-ratio0.5_FedAvg_0.01_10u_32b_5_0.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/Mnist-alpha0.1-ratio0.5_FedAvg_0.01_10u_32b_5_1.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/Mnist-alpha0.1-ratio0.5_FedAvg_0.01_10u_32b_5_2.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/Mnist-alpha0.1-ratio0.5_FedGen_0.01_10u_32b_5_0_embed0.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/Mnist-alpha0.1-ratio0.5_FedGen_0.01_10u_32b_5_1_embed0.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/Mnist-alpha0.1-ratio0.5_FedGen_0.01_10u_32b_5_2_embed0.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverbase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/trainmodel/Net.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/trainmodel/Net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/trainmodel/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/trainmodel/generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userFedDistill.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedDistill.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userFedEnsemble.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedEnsemble.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userbase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Mnist-alpha0.1-ratio0.5/server.pt" beforeDir="false" afterPath="$PROJECT_DIR$/models/Mnist-alpha0.1-ratio0.5/server.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/model_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/model_config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sxq1024" />
+        <entry key="$PROJECT_DIR$" value="sxq1025" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -189,6 +173,13 @@
       <workItem from="1667358920811" duration="1015000" />
       <workItem from="1667359964481" duration="357000" />
       <workItem from="1667360332849" duration="95000" />
+      <workItem from="1667360437826" duration="2155000" />
+      <workItem from="1667441535901" duration="600000" />
+      <workItem from="1667544747064" duration="478000" />
+      <workItem from="1667614221857" duration="4000" />
+      <workItem from="1667619588452" duration="1203000" />
+      <workItem from="1667787086256" duration="12705000" />
+      <workItem from="1667965814071" duration="5775000" />
     </task>
     <task id="LOCAL-00001" summary="修改文件名">
       <created>1666600528539</created>
@@ -225,7 +216,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667360007908</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="提交data">
+      <created>1667360480263</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667360480263</updated>
+    </task>
+    <task id="LOCAL-00007" summary="提交">
+      <created>1667787173317</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667787173317</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,7 +253,9 @@
     <MESSAGE value="修改文件名2" />
     <MESSAGE value="注释" />
     <MESSAGE value="提交很多" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交很多" />
+    <MESSAGE value="提交data" />
+    <MESSAGE value="提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -260,68 +267,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverbase.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FLAlgorithms/trainmodel/Net.py</url>
           <line>110</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
-          <line>39</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
-          <line>126</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
-          <line>116</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
-          <line>118</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
-          <line>120</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
-          <line>52</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
-          <line>60</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/utils/model_utils.py</url>
-          <line>211</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
-          <line>92</line>
-          <option name="timeStamp" value="59" />
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -333,7 +305,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FedGen22$test1024.coverage" NAME="test1024 Coverage Results" MODIFIED="1666599055104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/FedGenSxq$main.coverage" NAME="main Coverage Results" MODIFIED="1666839612428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FedGenSxq$main.coverage" NAME="main Coverage Results" MODIFIED="1667987691119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FedGen$test1024.coverage" NAME="test1024 Coverage Results" MODIFIED="1666598758063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FedGenSxq$test1024.coverage" NAME="test1024 Coverage Results" MODIFIED="1666665872913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
