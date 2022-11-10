@@ -34,7 +34,7 @@ class FedDistill(ServerBase):
         print("Loading testing data.")
         print("Number of Train/Test samples:", self.total_train_samples, self.total_test_samples)
         print("Data from {} users in total.".format(total_users))
-        print("Finished creating FedAvg server.")
+        print("Finished creating FedDistill server.")
 
     def train(self, args):
         # pretraining ####
@@ -55,7 +55,7 @@ class FedDistill(ServerBase):
             self.selected_users, self.user_idxs = self.select_users(glob_iter, self.num_users, return_idx=True)
             if self.share_model:
                 self.send_parameters(mode=self.mode)  # broadcast averaged prediction model
-            self.evaluate()  # evaluate global model performance
+            self.evaluate(glob_iter=glob_iter)  # evaluate global model performance
             self.send_logits()  # send global logits if have any
             random_chosen_id = np.random.choice(self.user_idxs)
             for user_id, user in zip(self.user_idxs, self.selected_users):  # allow selected users to train

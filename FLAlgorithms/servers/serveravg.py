@@ -40,7 +40,7 @@ class FedAvg(ServerBase):
             self.selected_users = self.select_users(glob_iter, self.num_users)
             # 随机选择num_users个用户
             self.send_parameters(mode=self.mode)
-            self.evaluate()     # 对所有20个user进行评估
+            self.evaluate(glob_iter=glob_iter)     # 对所有20个user进行评估
             self.timestamp = time.time()  # log user-training start time
             for user in self.selected_users:  # allow selected users to train
                 user.train(glob_iter, personalized=self.personalized)  # useravg的train

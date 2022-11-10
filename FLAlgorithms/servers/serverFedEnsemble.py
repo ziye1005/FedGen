@@ -34,7 +34,7 @@ class FedEnsemble(ServerBase):
         print("Loading testing data.")
         print("Number of Train/Test samples:", self.total_train_samples, self.total_test_samples)
         print("Data from {} users in total.".format(total_users))
-        print("Finished creating FedAvg server.")
+        print("Finished creating FedEnsemble server.")
 
     def train(self, args):
         # pretraining

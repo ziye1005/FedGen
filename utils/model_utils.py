@@ -208,8 +208,8 @@ def get_dataset_name(dataset):
 # 生成产生式模型
 def create_generative_model(dataset, algorithm='', model='cnn', embedding=False):
     passed_dataset = get_dataset_name(dataset)
-    assert any([alg in algorithm for alg in ['FedGen', 'FedGen']])
-    if 'FedGen' in algorithm:
+    assert any([alg in algorithm for alg in ['FedGen', 'FedGen', 'FedDistillGen']])
+    if 'FedGen' in algorithm or 'FedDistillGen' in algorithm:
         # temporary roundabout to figure out the sensitivity of the generator network & sampling size
         if 'cnn' in algorithm:
             gen_model = algorithm.split('-')[1]

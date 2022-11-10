@@ -1,20 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d76dd86-1a27-4d2c-83cd-6a3e9b017e75" name="Changes" comment="提交很多">
-      <change afterPath="$PROJECT_DIR$/entityAlign.json" afterDir="false" />
+    <list default="true" id="3d76dd86-1a27-4d2c-83cd-6a3e9b017e75" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedDistillGen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedDistillGen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-balanced-test-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-balanced-test-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-balanced-train-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-balanced-train-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-byclass-test-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-byclass-test-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-byclass-train-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-byclass-train-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-bymerge-test-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-bymerge-test-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-bymerge-train-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-bymerge-train-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-digits-test-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-digits-test-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-digits-train-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-digits-train-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-letters-test-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-letters-test-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-letters-train-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-letters-train-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-mnist-test-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-mnist-test-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-mnist-train-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-mnist-train-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/gzip.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha0.05-ratio0.1/test/test.pt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha0.05-ratio0.1/train/train.pt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha1.0-ratio0.1/test/test.pt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha1.0-ratio0.1/train/train.pt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha10.0-ratio0.1/test/test.pt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha10.0-ratio0.1/train/train.pt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedDistill.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedDistill.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedEnsemble.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedEnsemble.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedProx.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedProx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serveravg.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serveravg.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverbase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/trainmodel/Net.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/trainmodel/Net.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/trainmodel/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/trainmodel/generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userFedDistill.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedDistill.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userFedEnsemble.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedEnsemble.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userbase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Mnist-alpha0.1-ratio0.5/server.pt" beforeDir="false" afterPath="$PROJECT_DIR$/models/Mnist-alpha0.1-ratio0.5/server.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/model_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/model_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/model_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/model_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,12 +85,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\postgraduate1\FLCode\FedGenSxq\FLAlgorithms\servers" />
+      <recent name="E:\postgraduate1\FLCode\FedGenSxq\FLAlgorithms\users" />
       <recent name="E:\postgraduate1\FLCode\FedGenSxq" />
     </key>
   </component>
@@ -180,6 +214,7 @@
       <workItem from="1667619588452" duration="1203000" />
       <workItem from="1667787086256" duration="12705000" />
       <workItem from="1667965814071" duration="5775000" />
+      <workItem from="1668078416224" duration="1519000" />
     </task>
     <task id="LOCAL-00001" summary="修改文件名">
       <created>1666600528539</created>
@@ -266,29 +301,9 @@
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
-          <line>24</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverbase.py</url>
-          <line>48</line>
+          <line>51</line>
           <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
-          <line>55</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py</url>
-          <line>59</line>
-          <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/FLAlgorithms/trainmodel/Net.py</url>
@@ -305,7 +320,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FedGen22$test1024.coverage" NAME="test1024 Coverage Results" MODIFIED="1666599055104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/FedGenSxq$main.coverage" NAME="main Coverage Results" MODIFIED="1667987691119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FedGenSxq$main.coverage" NAME="main Coverage Results" MODIFIED="1668077874446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FedGen$test1024.coverage" NAME="test1024 Coverage Results" MODIFIED="1666598758063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FedGenSxq$test1024.coverage" NAME="test1024 Coverage Results" MODIFIED="1666665872913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

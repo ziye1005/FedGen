@@ -37,6 +37,7 @@ class ServerBase:
         self.save_path = args.result_path
         self.append_acc_test_max = 0
         self.append_acc_test_iter = 0
+        self.append_loss_min = 0
         os.system("mkdir -p {}".format(self.save_path))
 
     # 用于包含蒸馏的算法，FedDistill,FedEnsemble,FedGen
@@ -227,3 +228,4 @@ class ServerBase:
         if self.append_acc_test_max < glob_acc:
             self.append_acc_test_max = glob_acc
             self.append_acc_test_iter = glob_iter
+            self.append_loss_min = glob_loss

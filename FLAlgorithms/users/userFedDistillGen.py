@@ -4,7 +4,7 @@ import numpy as np
 from FLAlgorithms.users.userbase import UserBase
 
 
-class UserFedGen(UserBase):
+class UserDistillFedGen(UserBase):
     # 在serverFedGen.init里面生成了传过来的generative_model，latent_layer_idx，available_labels，label_info，
     # 并在init 75行创建了total_users 20个用户，所以传给所有用户的以上四个参数都是相同的，但是用户自身的train_data和test_data不同
     def __init__(self,
@@ -18,6 +18,7 @@ class UserFedGen(UserBase):
         self.latent_layer_idx = latent_layer_idx
         self.available_labels = available_labels
         self.label_info = label_info
+        self.temperature = args.temperature
 
     def exp_lr_scheduler(self, epoch, decay=0.98, init_lr=0.1, lr_decay_epoch=1):
         # 每lr_decay_epoch epochs学习率衰减系数为0.95
@@ -39,63 +40,77 @@ class UserFedGen(UserBase):
         self.clean_up_counts()
         self.model.train()
         # eval 返回传入字符串的表达式的结果。就是说：将字符串当成有效的表达式 来求值并返回计算结果。
-        self.generative_model.eval()    # 不同
-        TEACHER_LOSS, DIST_LOSS, LATENT_LOSS = 0, 0, 0      # 不同
+        self.generative_model.eval()
+        TEACHER_LOSS, DIST_LOSS, LATENT_LOSS = 0, 0, 0
+        # DIST_LOSS没用到
         for epoch in range(self.local_epochs):
             self.model.train()
-            for i in range(self.K):
+            # 通过Net.py继承,调用的是torch自带，nn.module.train()
+            for i in range(self.K):     # 默认是1
                 # sample from real dataset (un-weighted)
                 result = self.get_next_train_batch(count_labels=True)
                 X, y = result['X'], result['y']
-                self.update_label_counts(result['labels'], result['counts'])
+                self.update_label_counts(result['labels'], result['counts'])    # 更新本地标签分布
                 self.optimizer.zero_grad()
-                # 不同
-                model_result = self.model(X, logit=True)
-                user_output_logp = model_result['output']   # 得到predict层的输出
+                # 与FedAvg类似
+                model_result = self.model(X, logit=True, temperature=self.temperature)
+                # 改变本地模型，调用Net.forward()，返回的是results['output']表示log_softmax损失函数 + results['logit']表示predict layer，
+                # Net.output_dim是从model_config.py里面获得的
+                user_output_logp = model_result['output']
                 predictive_loss = self.loss(user_output_logp, y)    # 计算predict层的损失
-
+                # 不同开始
                 # sample y and generate z
+                # 第一轮glob_iter所有user的regularization是false；后面轮次全是true；第一轮的所有user的loss相当于FedAvg的
                 if regularization and epoch < early_stop:
-                    # 学习率alpha和beta的优化更新，使用0.95的衰减系数 exp_lr_scheduler
+                    # 学习率alpha和beta的优化更新，使用0.98的衰减系数 exp_lr_scheduler
                     generative_alpha = self.exp_lr_scheduler(glob_iter, decay=0.98, init_lr=self.generative_alpha)
                     generative_beta = self.exp_lr_scheduler(glob_iter, decay=0.98, init_lr=self.generative_beta)
-                    # 获取相同标签的生成器输出(潜在表示)
+                    # 获取相同标签的生成器输出(潜在表示)，generative_model是在serverFedGen里面初始化的Generator类的对象
                     gen_output = self.generative_model(y, latent_layer_idx=self.latent_layer_idx)['output']
+                    # 调用Generator.forward()，返回输出层的信息
                     logit_given_gen = self.model(gen_output, start_layer_idx=self.latent_layer_idx, logit=True)['logit']
-                    # 这里面应该是修改的地方
-                    target_p = F.softmax(logit_given_gen, dim=1).clone().detach()
+                    # 改变本地模型，调用Net.mapping()，返回results['output']表示log_softmax损失函数 + results['logit']表示predict layer，
+                    # 这里面应该是修改的地方，KD学生网络核心的一句话
+                    target_p = F.softmax(logit_given_gen / self.temperature, dim=1).clone().detach()
                     user_latent_loss = generative_beta * self.ensemble_loss(user_output_logp, target_p)
+                    # temp = 10
+                    # distillation_loss = self.soft_loss(F.softmax(student_preds / self.temperature, dim=1), F.softmax(teacher_preds/self.temperature, dim=1))
+                    # 计算client的损失
 
                     sampled_y = np.random.choice(self.available_labels, self.gen_batch_size)
                     sampled_y = torch.tensor(sampled_y)
-                    gen_result = self.generative_model(sampled_y, latent_layer_idx=self.latent_layer_idx)
+                    gen_result = self.generative_model(sampled_y, latent_layer_idx=self.latent_layer_idx)   # 调用Generator.forward()
+
                     gen_output = gen_result['output']  # latent representation when latent = True, x otherwise
                     user_output_logp = self.model(gen_output, start_layer_idx=self.latent_layer_idx)['output']
+                    # 改变本地模型，依然调用Net.mapping()，teacher的loss
                     teacher_loss = generative_alpha * torch.mean(
                         self.generative_model.crossentropy_loss(user_output_logp, sampled_y)
                     )
                     # this is to further balance oversampled down-sampled synthetic data
                     gen_ratio = self.gen_batch_size / self.batch_size
                     loss = predictive_loss + gen_ratio * teacher_loss + user_latent_loss
-                    TEACHER_LOSS += teacher_loss
+                    TEACHER_LOSS += teacher_loss  # 用于打印
                     LATENT_LOSS += user_latent_loss
                 else:
                     # get loss and perform optimization
                     loss = predictive_loss
                 # 不同结束
                 loss.backward()
-                self.optimizer.step()  # self.local_model)
-        # local-model <=== self.model
+                self.optimizer.step()  # self.local_model
+        # optimizer.step()函数的作用是执行一次优化步骤，通过梯度下降法来更新参数的值。
+        # local_model <=== self.model
         self.clone_model_paramenter(self.model.parameters(), self.local_model)
         if personalized:
             self.clone_model_paramenter(self.model.parameters(), self.personalized_model_bar)
         self.lr_scheduler.step(glob_iter)
-        # 不同
+        # 不同，输出
         if regularization and verbose:
             TEACHER_LOSS = TEACHER_LOSS.detach().numpy() / (self.local_epochs * self.K)
             LATENT_LOSS = LATENT_LOSS.detach().numpy() / (self.local_epochs * self.K)
-            info = '\nUser Teacher Loss={:.4f}'.format(TEACHER_LOSS)
+            info = 'userFedGen verbose print\nUser Teacher Loss={:.4f}'.format(TEACHER_LOSS)
             info += ', Latent Loss={:.4f}'.format(LATENT_LOSS)
+            info += ', generate_alpha={:.4f}'.format(generative_alpha)
             print(info)
         # 不同结束
 

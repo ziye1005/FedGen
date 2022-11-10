@@ -1,4 +1,4 @@
-from FLAlgorithms.users.userFedGen import UserFedGen
+from FLAlgorithms.users.userFedDistillGen import UserDistillFedGen
 from FLAlgorithms.servers.serverbase import ServerBase
 from utils.model_utils import read_data, read_user_data, aggregate_user_data, create_generative_model
 import torch
@@ -13,7 +13,7 @@ import time
 MIN_SAMPLES_PER_LABEL = 1
 
 
-class FedGen(ServerBase):
+class FedDistillGen(ServerBase):
     def __init__(self, args, model, seed):
         super().__init__(args, model, seed)
 
@@ -59,7 +59,7 @@ class FedGen(ServerBase):
         # amsgrad 是否使用AMSGrad的变体,默认false。
 
         #  torch.optim.lr_scheduler提供了一些根据epoch调整学习率的方法，一般是随着epoch的增大而逐渐减小学习率
-        # ExponentialLR表示每个epoch都做一次更新，gamma是更新lr的乘法因子
+        # ExponentialLR表示每个epoch都做一次更新，gamma是更新lr的乘法因子，有序调整————指数衰减调整(Exponential)
         self.generative_optimizer = torch.optim.Adam(
             params=self.generative_model.parameters(),
             lr=self.ensemble_lr, betas=(0.9, 0.999),
@@ -81,10 +81,10 @@ class FedGen(ServerBase):
             self.total_train_samples += len(train_data)
             self.total_test_samples += len(test_data)
             # 这句话没用，藏起来
-            id, train, test = read_user_data(i, data, dataset=args.dataset)
+            # id, train, test = read_user_data(i, data, dataset=args.dataset)
             # 将generative model Gw(self.generative_model)，全局模型预测层theta（self.latent_layer_idx）初始值-1，
             # 全局标签分布（label_info），全部标签信息（available_labels）这增加的四项一起送去UserFedGen取初始化user
-            user = UserFedGen(
+            user = UserDistillFedGen(
                 args, id, model, self.generative_model,
                 train_data, test_data,
                 self.available_labels, self.latent_layer_idx, label_info,
@@ -92,7 +92,7 @@ class FedGen(ServerBase):
             self.users.append(user)
         print("Number of Train/Test samples:", self.total_train_samples, self.total_test_samples)
         print("Data from {} users in total.".format(total_users))
-        print("Finished creating FedGen server.")
+        print("Finished creating FedDistillGen server.")
 
     # serverFedGen.train仅有两处不同：chosen_verbose_user以及派生的user.train的调用、训练生成器train_generator
     # FedGen的模型训练，
@@ -105,7 +105,7 @@ class FedGen(ServerBase):
     def train(self, args):
         # pretraining
         for glob_iter in range(self.num_glob_iters):
-            print("\n\n-------------Round number FedGEN: ", glob_iter, " -------------\n\n")
+            print("\n\n-------------Round number FedGENNew: ", glob_iter, " -------------\n\n")
             # return_idx=True表示调用serverbase.select_users返回user_idxs是数组
             self.selected_users, self.user_idxs = self.select_users(glob_iter, self.num_users, return_idx=True)
             if not self.local:
@@ -116,14 +116,14 @@ class FedGen(ServerBase):
             self.timestamp = time.time()  # log user-training start time
             for user_id, user in zip(self.user_idxs, self.selected_users):  # allow selected users to train
                 # 这一行不同
-                verbose = user_id == chosen_verbose_user    # 表示是否相同的boolean型
+                verbose = user_id == chosen_verbose_user    # 表示是否相同的boolean型，是否打印
                 # perform regularization using generated samples after the first communication round
                 user.train(     # 调用userFedGen.train
                     glob_iter,
                     personalized=self.personalized,
                     early_stop=self.early_stop,
                     verbose=verbose and glob_iter > 0,
-                    regularization=glob_iter > 0)
+                    regularization=glob_iter > 0)   # 第一轮glob_iter所有user的regularization是false；后面轮次全是true
             curr_timestamp = time.time()  # log  user-training end time
             train_time = (curr_timestamp - self.timestamp) / len(self.selected_users)
             self.metrics['user_train_time'].append(train_time)
@@ -165,12 +165,13 @@ class FedGen(ServerBase):
 
         def update_generator_(n_iters, student_model, TEACHER_LOSS, STUDENT_LOSS, DIVERSITY_LOSS):
             self.generative_model.train()
+            # 测试集上评估性能
             student_model.eval()
             for i in range(n_iters):
                 self.generative_optimizer.zero_grad()
                 y = np.random.choice(self.qualified_labels, batch_size)
                 y_input = torch.LongTensor(y)
-                # feed to generator
+                # feed to generator，前向预测
                 gen_result = self.generative_model(y_input, latent_layer_idx=latent_layer_idx, verbose=True)
                 # get approximation of Z( latent) if latent set to True, X( raw image) otherwise
                 gen_output, eps = gen_result['output'], gen_result['eps']
@@ -200,6 +201,7 @@ class FedGen(ServerBase):
                     loss = self.ensemble_alpha * teacher_loss - self.ensemble_beta * student_loss + self.ensemble_eta * diversity_loss
                 else:
                     loss = self.ensemble_alpha * teacher_loss + self.ensemble_eta * diversity_loss
+                # 反向传播
                 loss.backward()
                 self.generative_optimizer.step()
                 TEACHER_LOSS += self.ensemble_alpha * teacher_loss  # (torch.mean(TEACHER_LOSS.double())).item()

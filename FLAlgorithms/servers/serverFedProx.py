@@ -25,14 +25,14 @@ class FedProx(ServerBase):
             self.total_train_samples += user.train_samples
 
         print("Number of users / total users:", self.num_users, " / ", total_users)
-        print("Finished creating FedAvg server.")
+        print("Finished creating FedProx server.")
 
     def train(self, args):
         for glob_iter in range(self.num_glob_iters):
             print("\n\n-------------Round number: ", glob_iter, " -------------\n\n")
             self.selected_users = self.select_users(glob_iter, self.num_users)
             self.send_parameters()
-            self.evaluate()
+            self.evaluate(glob_iter=glob_iter)
             for user in self.selected_users:  # allow selected users to train
                 user.train(glob_iter)
             self.aggregate_parameters()
