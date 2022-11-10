@@ -39,6 +39,7 @@ def run_job(args, i):
     if args.train:
         server.train(args)  # 调用各自算法的train和test，如果是FedAvg，则调用Class FedAvg的train函数，即serveravg.py
         server.test()
+        print('final acc best: {:.4f},{}'.format(server.append_acc_test_max, server.append_acc_test_iter))
 
 
 def main(args):
@@ -49,7 +50,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", type=str, default="EMnist-alpha0.1-ratio0.1")   # 使用的数据集，需要先使用指令下载
+    parser.add_argument("--dataset", type=str, default="Mnist-alpha0.1-ratio0.5")   # 使用的数据集，需要先使用指令下载
     # EMnist-alpha0.1-ratio0.1 Mnist-alpha0.1-ratio0.5
     parser.add_argument("--model", type=str, default="cnn")     # 只有cnn，如果用MLP效果不如cnn
     parser.add_argument("--train", type=int, default=1, choices=[0, 1])  # 这个不用管，是1才能开始训练
@@ -65,12 +66,13 @@ if __name__ == "__main__":
     parser.add_argument("--lamda", type=int, default=1, help="Regularization term")     # 正则化
     parser.add_argument("--mix_lambda", type=float, default=0.1, help="Mix lambda for FedMXI baseline")
     parser.add_argument("--embedding", type=int, default=0, help="Use embedding layer in generator network")
-    parser.add_argument("--num_glob_iters", type=int, default=10)   # 训练的次数，外循环，在serverFedGen里面
-    parser.add_argument("--local_epochs", type=int, default=5)      # 对选中的每个user，进行local_epochs次训练，在userFedGen里面
+    parser.add_argument("--num_glob_iters", type=int, default=400)   # 训练的次数，外循环，在serverFedGen里面
+    parser.add_argument("--local_epochs", type=int, default=20)      # 对选中的每个user，进行local_epochs次训练，在userFedGen里面
     parser.add_argument("--num_users", type=int, default=10, help="Number of Users per round")  # 选中的用户数量
     parser.add_argument("--K", type=int, default=1, help="Computation steps")    # 在userFedGen里面的一次计算的循环
-    parser.add_argument("--times", type=int, default=10, help="running time")  # 运行次数，进行times次的训练和测试
+    parser.add_argument("--times", type=int, default=1, help="running time")  # 运行次数，进行times次的训练和测试
     parser.add_argument("--device", type=str, default="cuda", choices=["cpu", "cuda"], help="run device (cpu | cuda)")  # 可选cpu和cuda
+    parser.add_argument("--temperature", type=int, default=0.5, help="distillation temperature")  # 蒸馏温度
     parser.add_argument("--result_path", type=str, default="results", help="directory path to save results")    # 结果输出路径
 
     args = parser.parse_args()

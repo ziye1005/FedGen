@@ -18,7 +18,7 @@ class UserFedGen(UserBase):
         self.latent_layer_idx = latent_layer_idx
         self.available_labels = available_labels
         self.label_info = label_info
-        self.temperature = 0.5
+        self.temperature = args.temperature
 
     def exp_lr_scheduler(self, epoch, decay=0.98, init_lr=0.1, lr_decay_epoch=1):
         # 每lr_decay_epoch epochs学习率衰减系数为0.95

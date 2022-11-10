@@ -110,7 +110,7 @@ class FedGen(ServerBase):
             self.selected_users, self.user_idxs = self.select_users(glob_iter, self.num_users, return_idx=True)
             if not self.local:
                 self.send_parameters(mode=self.mode)  # broadcast averaged prediction model
-            self.evaluate()     # 调用serverbase.evaluate
+            self.evaluate(glob_iter=glob_iter)     # 调用serverbase.evaluate
             # 这一行不同
             chosen_verbose_user = np.random.randint(0, len(self.users))     # 选择一个0，19的随机数作为index即user_id
             self.timestamp = time.time()  # log user-training start time

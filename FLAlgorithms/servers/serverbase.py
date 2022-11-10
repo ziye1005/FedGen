@@ -35,6 +35,8 @@ class ServerBase:
         self.metrics = {key: [] for key in METRICS}
         self.timestamp = None
         self.save_path = args.result_path
+        self.append_acc_test_max = 0
+        self.append_acc_test_iter = 0
         os.system("mkdir -p {}".format(self.save_path))
 
     # 用于包含蒸馏的算法，FedDistill,FedEnsemble,FedGen
@@ -190,7 +192,7 @@ class ServerBase:
         if save:
             self.metrics['per_acc'].append(glob_acc)
             self.metrics['per_loss'].append(test_loss)
-        print("Average Global Accurancy = {:.4f}, Loss = {:.2f}.".format(glob_acc, test_loss))
+        print("Average Global Accurancy personal= {:.4f}, Loss = {:.2f}.".format(glob_acc, test_loss))
 
     def evaluate_ensemble(self, selected=True):
         self.model.eval()
@@ -211,9 +213,9 @@ class ServerBase:
         test_acc = test_acc.detach().numpy() / y.shape[0]
         self.metrics['glob_acc'].append(test_acc)
         self.metrics['glob_loss'].append(loss)
-        print("Average Global Accurancy = {:.4f}, Loss = {:.2f}.".format(test_acc, loss))
+        print("Average Global Accurancy Test= {:.4f}, Loss = {:.2f}.".format(test_acc, loss))
 
-    def evaluate(self, save=True, selected=False):
+    def evaluate(self, save=True, selected=False, glob_iter=0):
         # override evaluate function to log vae-loss.
         test_ids, test_samples, test_accs, test_losses = self.test(selected=selected)
         glob_acc = np.sum(test_accs) * 1.0 / np.sum(test_samples)
@@ -222,3 +224,6 @@ class ServerBase:
             self.metrics['glob_acc'].append(glob_acc)
             self.metrics['glob_loss'].append(glob_loss)
         print("Average Global Accurancy = {:.4f}, Loss = {:.2f}.".format(glob_acc, glob_loss))
+        if self.append_acc_test_max < glob_acc:
+            self.append_acc_test_max = glob_acc
+            self.append_acc_test_iter = glob_iter
