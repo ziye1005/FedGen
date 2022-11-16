@@ -6,7 +6,78 @@ import numpy as np
 from FLAlgorithms.users.userbase import UserBase
 
 
-class UserDistillFedGen(UserBase):
+def dkd_loss(logits_student, logits_teacher, target, alpha, beta, temperature):
+    gt_mask = _get_gt_mask(logits_student, target)
+    # gt_mask是全0数组上为1处是标签，other_mask全1数组上为0处为标签
+    other_mask = _get_other_mask(logits_student, target)
+    pred_student0 = F.softmax(logits_student / temperature, dim=1)
+    # pt(S)
+    pred_teacher0 = F.softmax(logits_teacher / temperature, dim=1)
+    # pt(T)
+    pred_student = cat_mask(pred_student0, gt_mask, other_mask)
+    # pred_student（pt_stu,pnt_stu）与pred_teacher(pt_tea,pnt_tea)这两列都是一个串联
+    pred_teacher = cat_mask(pred_teacher0, gt_mask, other_mask)
+    log_pred_student = torch.log(pred_student)
+    a = F.kl_div(log_pred_student, pred_teacher, size_average=False)
+    b = temperature**2
+    c = target.shape[0]
+    tckd_loss = (
+        F.kl_div(log_pred_student, pred_teacher, size_average=False)
+        * (temperature**2)
+        / target.shape[0]
+    )
+    # 这里面一个kl_div其实就是等式（4）的前两部分的和，即kl(bT || bS)，放在第一位的log_pred_student即bS是作为被指导的分子，放在第二位的pred_teacher即bT是作为出现两次的参数
+    # **表示乘方，此处除以两个temperature
+    pred_teacher_part2 = F.softmax(
+        logits_teacher / temperature - 10.0 * gt_mask, dim=1
+    )
+    aa = logits_teacher / temperature
+    bb = 1000.0 * gt_mask
+    cc = aa - bb
+    dd = F.softmax(aa, dim=1)
+    ee = F.softmax(cc, dim=1)
+    log_pred_student_part2 = F.log_softmax(
+        logits_student / temperature - 10.0 * gt_mask, dim=1
+    )
+    nckd_loss = (
+        F.kl_div(log_pred_student_part2, pred_teacher_part2, size_average=False)
+        * (temperature**2)
+        / target.shape[0]
+    )
+    return alpha * tckd_loss + beta * nckd_loss
+
+
+def _get_gt_mask(logits, target):
+    target = target.reshape(-1)
+    # 变成一行
+    mask = torch.zeros_like(logits).scatter_(1, target.unsqueeze(1), 1).bool()
+    # one_hot操作，128*100的数组，标签处设为1，其余为0，128为batchsize抓取的数据，100为标签总数
+
+    return mask
+
+
+def _get_other_mask(logits, target):
+    target = target.reshape(-1)
+    # reshape(-1)变为一列，128*1
+    index = target.unsqueeze(1)
+    # unsqueeze增加一列变成128*1*1，index有128行，每行都是一个1*1数组。
+    # ones_like纯1数组，接下来类似one_hot操作，标签处设为0，其余位置为1
+    mask1 = torch.ones_like(logits).scatter_(1, index, 0)
+    # logit 128*100，torch.ones_like(logits)形成一个128*100的全1数组，假设128个数据的标签为[54,32,.....]，scatter_()函数将one_like()[0][54]变为0，[1][32]变为0
+    mask =mask1.bool()
+    return mask
+
+
+def cat_mask(t, mask1, mask2):
+    t1 = (t * mask1).sum(dim=1, keepdims=True)
+    # t1是p(t)的teacher或者student
+    t2 = (t * mask2).sum(1, keepdims=True)
+    # t2是p\(t)的teacher或者student
+    rt = torch.cat([t1, t2], dim=1)
+    return rt
+
+
+class UserFedDKDGen(UserBase):
     # 在serverFedGen.init里面生成了传过来的generative_model，latent_layer_idx，available_labels，label_info，
     # 并在init 75行创建了total_users 20个用户，所以传给所有用户的以上四个参数都是相同的，但是用户自身的train_data和test_data不同
     def __init__(self,
@@ -74,15 +145,19 @@ class UserDistillFedGen(UserBase):
                     # 学习率alpha和beta的优化更新，使用0.98的衰减系数 exp_lr_scheduler
                     generative_alpha = self.exp_lr_scheduler(glob_iter, decay=0.98, init_lr=self.generative_alpha)
                     generative_beta = self.exp_lr_scheduler(glob_iter, decay=0.98, init_lr=self.generative_beta)
+                    generative_alpha_dkd = self.exp_lr_scheduler(glob_iter, decay=0.98, init_lr=self.distillAlpha)
+                    generative_beta_dkd = self.exp_lr_scheduler(glob_iter, decay=0.98, init_lr=self.distillBeta)
                     # 获取相同标签的生成器输出(潜在表示)，generative_model是在serverFedGen里面初始化的Generator类的对象
                     gen_output = self.generative_model(y, latent_layer_idx=self.latent_layer_idx)['output']
                     # 调用Generator.forward()，返回输出层的信息
                     logit_given_gen = self.model(gen_output, start_layer_idx=self.latent_layer_idx, logit=True)['logit']
                     # 改变本地模型，调用Net.mapping()，返回results['output']表示log_softmax损失函数 + results['logit']表示predict layer，
                     #
-                    target_p = F.softmax(logit_given_gen / self.temperature, dim=1).clone().detach()
+                    # target_p = F.softmax(logit_given_gen / self.temperature, dim=1).clone().detach()
                     # 这个user_latent_loss应该是kd_loss,user_output_logp是student，target_p是teacher
-                    user_latent_loss = generative_beta * self.ensemble_loss(user_output_logp, target_p)
+                    # user_latent_loss = generative_beta * self.ensemble_loss(user_output_logp, target_p)
+                    loss_dkd = dkd_loss(logits_student, logit_given_gen, y, generative_alpha_dkd, generative_beta_dkd, self.temperature)
+                    user_loss2 = generative_beta*loss_dkd
                     # temp = 10
                     # distillation_loss = self.soft_loss(F.softmax(student_preds / self.temperature, dim=1), F.softmax(teacher_preds/self.temperature, dim=1))
                     # 计算client的损失
@@ -99,9 +174,9 @@ class UserDistillFedGen(UserBase):
                     )
                     # this is to further balance oversampled down-sampled synthetic data
                     gen_ratio = self.gen_batch_size / self.batch_size
-                    loss = predictive_loss + gen_ratio * teacher_loss + user_latent_loss
+                    loss = predictive_loss + gen_ratio * teacher_loss + user_loss2
                     TEACHER_LOSS += teacher_loss  # 用于打印
-                    LATENT_LOSS += user_latent_loss
+                    LATENT_LOSS += user_loss2
                 else:
                     # get loss and perform optimization
                     loss = predictive_loss

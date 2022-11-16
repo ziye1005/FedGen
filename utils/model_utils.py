@@ -192,6 +192,25 @@ def read_user_data(index, data, dataset='', count_labels=False):
     return id, train_data, test_data
 
 
+def read_user_data2(index, data, dataset='', count_labels=False):
+    # data contains: clients, groups, train_data, test_data, proxy_data(optional)
+    id = data[0][index]
+    train_data = data[2][id]
+    test_data = data[3][id]
+    X_train, y_train = convert_data(train_data['x'], train_data['y'], dataset=dataset)
+    train_data = [(x, y) for x, y in zip(X_train, y_train)]
+    X_test, y_test = convert_data(test_data['x'], test_data['y'], dataset=dataset)
+    test_data = [(x, y) for x, y in zip(X_test, y_test)]
+    if count_labels:
+        label_info = {}
+        unique_y, counts = torch.unique(y_train, return_counts=True)
+        unique_y = unique_y.detach().numpy()
+        counts = counts.detach().numpy()
+        label_info['labels'] = unique_y
+        label_info['counts'] = counts
+        return id, train_data, test_data, y_train, label_info
+    return id, train_data, test_data, y_train
+
 def get_dataset_name(dataset):
     dataset = dataset.lower()
     if 'celeb' in dataset:
@@ -208,8 +227,8 @@ def get_dataset_name(dataset):
 # 生成产生式模型
 def create_generative_model(dataset, algorithm='', model='cnn', embedding=False):
     passed_dataset = get_dataset_name(dataset)
-    assert any([alg in algorithm for alg in ['FedGen', 'FedGen', 'FedDistillGen']])
-    if 'FedGen' in algorithm or 'FedDistillGen' in algorithm:
+    assert any([alg in algorithm for alg in ['FedGen', 'FedGen', 'FedDistillGen', 'FedDKDGen']])
+    if 'FedGen' in algorithm or 'FedDistillGen' in algorithm or 'FedDKDGen' in algorithm:
         # temporary roundabout to figure out the sensitivity of the generator network & sampling size
         if 'cnn' in algorithm:
             gen_model = algorithm.split('-')[1]

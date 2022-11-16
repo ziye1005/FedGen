@@ -1,4 +1,4 @@
-from FLAlgorithms.users.userFedDistillGen import UserDistillFedGen
+from FLAlgorithms.users.userFedDKDGen import UserFedDKDGen
 from FLAlgorithms.servers.serverbase import ServerBase
 from utils.model_utils import read_data, read_user_data, read_user_data2, aggregate_user_data, create_generative_model
 import torch
@@ -13,7 +13,7 @@ import time
 MIN_SAMPLES_PER_LABEL = 1
 
 
-class FedDistillGen(ServerBase):
+class FedDKDGen(ServerBase):
     def __init__(self, args, model, seed):
         super().__init__(args, model, seed)
 
@@ -84,7 +84,7 @@ class FedDistillGen(ServerBase):
             # id, train, test = read_user_data(i, data, dataset=args.dataset)
             # 将generative model Gw(self.generative_model)，全局模型预测层theta（self.latent_layer_idx）初始值-1，
             # 全局标签分布（label_info），全部标签信息（available_labels）这增加的四项一起送去UserFedGen取初始化user
-            user = UserDistillFedGen(
+            user = UserFedDKDGen(
                 args, id, model, self.generative_model,
                 train_data, test_data,
                 self.available_labels, self.latent_layer_idx, label_info,
@@ -105,7 +105,7 @@ class FedDistillGen(ServerBase):
     def train(self, args):
         # pretraining
         for glob_iter in range(self.num_glob_iters):
-            print("\n\n-------------Round number FedGENNew: ", glob_iter, " -------------\n\n")
+            print("\n\n-------------Round number FedDKD: ", glob_iter, " -------------\n\n")
             # return_idx=True表示调用serverbase.select_users返回user_idxs是数组
             self.selected_users, self.user_idxs = self.select_users(glob_iter, self.num_users, return_idx=True)
             if not self.local:
