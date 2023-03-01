@@ -42,6 +42,22 @@ def get_data_dir(dataset):
         train_data_dir = os.path.join(path_prefix, 'train')
         test_data_dir = os.path.join(path_prefix, 'test')
         proxy_data_dir = os.path.join('/user500/', 'proxy')
+    elif 'CIFAR100' in dataset:
+        dataset_ = dataset.replace('alpha', '').replace('ratio', '').split('-')
+        alpha, ratio = dataset_[1], dataset_[2]
+        # path_prefix=os.path.join('data', 'Mnist', 'u20alpha{}min10ratio{}'.format(alpha, ratio))
+        path_prefix = os.path.join('data', 'Mnist', 'u20c10-alpha{}-ratio{}'.format(alpha, ratio))
+        train_data_dir = os.path.join(path_prefix, 'train')
+        test_data_dir = os.path.join(path_prefix, 'test')
+        proxy_data_dir = 'data/proxy_data/mnist-n10/'
+    elif 'CIFAR10' in dataset:
+        dataset_ = dataset.lower().replace('alpha', '').replace('ratio', '').split('-')
+        alpha, ratio = dataset_[1], dataset_[2]
+        # path_prefix=os.path.join('data', 'Mnist', 'u20alpha{}min10ratio{}'.format(alpha, ratio))
+        path_prefix = os.path.join('data', 'CIFAR10', 'u20c10-alpha{}-ratio{}'.format(alpha, ratio))
+        train_data_dir = os.path.join(path_prefix, 'train')
+        test_data_dir = os.path.join(path_prefix, 'test')
+        proxy_data_dir = 'data/proxy_data/mnist-n10/'
 
     else:
         raise ValueError("Dataset not recognized.")
@@ -219,6 +235,10 @@ def get_dataset_name(dataset):
         passed_dataset = 'emnist'
     elif 'mnist' in dataset:
         passed_dataset = 'mnist'
+    elif 'cifar100' in dataset:
+        passed_dataset = 'cifar100'
+    elif 'cifar10' in dataset:
+        passed_dataset = 'cifar10'
     else:
         raise ValueError('Unsupported dataset {}'.format(dataset))
     return passed_dataset

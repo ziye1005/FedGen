@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d76dd86-1a27-4d2c-83cd-6a3e9b017e75" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedDistillGen.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedDistillGen.py" afterDir="false" />
+    <list default="true" id="3d76dd86-1a27-4d2c-83cd-6a3e9b017e75" name="Changes" comment="提交">
+      <change afterPath="$PROJECT_DIR$/data/CIFAR10/generate_niid_dirichlet.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-balanced-test-images-idx3-ubyte" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-balanced-test-labels-idx1-ubyte" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-balanced-train-images-idx3-ubyte" afterDir="false" />
@@ -29,23 +28,17 @@
       <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-mnist-train-images-idx3-ubyte" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/emnist-mnist-train-labels-idx1-ubyte" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/EMnist/data/EMNIST/raw/gzip.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha0.05-ratio0.1/test/test.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha0.05-ratio0.1/train/train.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha1.0-ratio0.1/test/test.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha1.0-ratio0.1/train/train.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha10.0-ratio0.1/test/test.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha10.0-ratio0.1/train/train.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedDistill.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedDistill.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedEnsemble.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedEnsemble.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedProx.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverFedProx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serveravg.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serveravg.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FLAlgorithms/servers/serverbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/servers/serverbase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedGen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLAlgorithms/users/userFedDKDGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/FLAlgorithms/users/userFedDKDGen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/EMnist/generate_niid_dirichlet.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/EMnist/generate_niid_dirichlet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha0.1-ratio0.1/test/test.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/EMnist/u20-letters-alpha0.1-ratio0.1/train/train.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Mnist/generate_niid_dirichlet.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/Mnist/generate_niid_dirichlet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Mnist-alpha0.1-ratio0.5/server.pt" beforeDir="false" afterPath="$PROJECT_DIR$/models/Mnist-alpha0.1-ratio0.5/server.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/model_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/model_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/model_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/model_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +56,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sxq1025" />
+        <entry key="$PROJECT_DIR$" value="sxq1110" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -84,19 +77,47 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="ToolWindowPython Console.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/melt" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="PyScientificConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\postgraduate1\FLCode\FedGenSxq\FLAlgorithms\servers" />
+      <recent name="E:\postgraduate1\FLCode\FedGenSxq\melt" />
       <recent name="E:\postgraduate1\FLCode\FedGenSxq\FLAlgorithms\users" />
+      <recent name="E:\postgraduate1\FLCode\FedGenSxq\FLAlgorithms\servers" />
+      <recent name="E:\postgraduate1\FLCode\FedGenSxq\data" />
       <recent name="E:\postgraduate1\FLCode\FedGenSxq" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\postgraduate1\FLCode\FedGenSxq\data\CIFAR10" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="Net" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FedGenSxq" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/FLAlgorithms/trainmodel" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FLAlgorithms/trainmodel/Net.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="FedGenSxq" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -111,6 +132,69 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="bar" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FedGenSxq" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/melt/k-means" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/melt/k-means/bar.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generate_niid_dirichlet (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FedGenSxq" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/CIFAR10" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/CIFAR10/generate_niid_dirichlet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generate_niid_dirichlet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FedGenSxq" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/EMnist" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/EMnist/generate_niid_dirichlet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -141,35 +225,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test1024" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="D:\ProgramData\Anaconda3\envs\py38ForFedGen\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test1024.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Python.bar" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.generate_niid_dirichlet" />
+      <item itemvalue="Python.generate_niid_dirichlet (1)" />
+      <item itemvalue="Python.Net" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.test1024" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.test1024" />
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.generate_niid_dirichlet" />
+        <item itemvalue="Python.generate_niid_dirichlet (1)" />
+        <item itemvalue="Python.Net" />
+        <item itemvalue="Python.bar" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +283,35 @@
       <workItem from="1667619588452" duration="1203000" />
       <workItem from="1667787086256" duration="12705000" />
       <workItem from="1667965814071" duration="5775000" />
-      <workItem from="1668078416224" duration="1519000" />
+      <workItem from="1668078416224" duration="3873000" />
+      <workItem from="1668132446766" duration="375000" />
+      <workItem from="1668132928540" duration="1582000" />
+      <workItem from="1668389493033" duration="7057000" />
+      <workItem from="1668476871465" duration="1353000" />
+      <workItem from="1668479696117" duration="3959000" />
+      <workItem from="1668563677145" duration="14000" />
+      <workItem from="1668564057052" duration="2793000" />
+      <workItem from="1668572539856" duration="87000" />
+      <workItem from="1668572781985" duration="10257000" />
+      <workItem from="1668650818310" duration="10136000" />
+      <workItem from="1668740107539" duration="611000" />
+      <workItem from="1669277843107" duration="8000" />
+      <workItem from="1669296788923" duration="262000" />
+      <workItem from="1669297058831" duration="538000" />
+      <workItem from="1669297614289" duration="5000" />
+      <workItem from="1670222087194" duration="1266000" />
+      <workItem from="1670304603089" duration="1801000" />
+      <workItem from="1671850106114" duration="1750000" />
+      <workItem from="1671853833080" duration="586000" />
+      <workItem from="1671871357919" duration="12000" />
+      <workItem from="1672052460820" duration="1113000" />
+      <workItem from="1676962649459" duration="627000" />
+      <workItem from="1677134221517" duration="2348000" />
+      <workItem from="1677202779336" duration="2595000" />
+      <workItem from="1677501106763" duration="3452000" />
+      <workItem from="1677546484449" duration="2787000" />
+      <workItem from="1677556671323" duration="12196000" />
+      <workItem from="1677636366023" duration="4680000" />
     </task>
     <task id="LOCAL-00001" summary="修改文件名">
       <created>1666600528539</created>
@@ -265,11 +362,36 @@
       <option name="project" value="LOCAL" />
       <updated>1667787173317</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="增加算法">
+      <created>1668080596250</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668080596251</updated>
+    </task>
+    <task id="LOCAL-00009" summary="增加了DKD进去">
+      <created>1668589487595</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668589487595</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -290,7 +412,9 @@
     <MESSAGE value="提交很多" />
     <MESSAGE value="提交data" />
     <MESSAGE value="提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交" />
+    <MESSAGE value="增加算法" />
+    <MESSAGE value="增加了DKD进去" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了DKD进去" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -301,14 +425,54 @@
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverbase.py</url>
-          <line>51</line>
-          <option name="timeStamp" value="74" />
+          <url>file://$PROJECT_DIR$/FLAlgorithms/servers/serverFedGen.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/model_utils.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/model_utils.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data/EMnist/generate_niid_dirichlet.py</url>
+          <line>217</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data/EMnist/generate_niid_dirichlet.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data/CIFAR10/generate_niid_dirichlet.py</url>
+          <line>94</line>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data/CIFAR10/generate_niid_dirichlet.py</url>
+          <line>98</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/FLAlgorithms/trainmodel/Net.py</url>
-          <line>110</line>
-          <option name="timeStamp" value="81" />
+          <line>59</line>
+          <option name="timeStamp" value="115" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -320,8 +484,11 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FedGen22$test1024.coverage" NAME="test1024 Coverage Results" MODIFIED="1666599055104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/FedGenSxq$main.coverage" NAME="main Coverage Results" MODIFIED="1668077874446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FedGenSxq$main.coverage" NAME="main Coverage Results" MODIFIED="1677641491130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FedGenSxq$generate_niid_dirichlet.coverage" NAME="generate_niid_dirichlet Coverage Results" MODIFIED="1677567216102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/EMnist" />
+    <SUITE FILE_PATH="coverage/FedGenSxq$generate_niid_dirichlet__1_.coverage" NAME="generate_niid_dirichlet (1) Coverage Results" MODIFIED="1677567515483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/CIFAR10" />
     <SUITE FILE_PATH="coverage/FedGen$test1024.coverage" NAME="test1024 Coverage Results" MODIFIED="1666598758063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FedGenSxq$test1024.coverage" NAME="test1024 Coverage Results" MODIFIED="1666665872913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FedGenSxq$tttt.coverage" NAME="tttt Coverage Results" MODIFIED="1668669028431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

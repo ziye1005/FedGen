@@ -21,7 +21,7 @@ python generate_niid_dirichlet.py --n_class 10 --sampling_ratio 0.5 --alpha 0.05
 
 - Similarly, to generate *non-iid* **EMnist** Dataset, using 10% of the total available training samples:
 <pre><code>cd FedGen/data/EMnist
-python generate_niid_dirichlet.py --sampling_ratio 0. --alpha 1 --n_user 20 
+python generate_niid_dirichlet.py --sampling_ratio 0.5 --alpha 1 --n_user 20 
 ### This will generate a dataset located at FedGen/data/EMnist/u20-letters-alpha0.1-ratio0.1/
 </code></pre> 
 

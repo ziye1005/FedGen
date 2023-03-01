@@ -9,7 +9,6 @@ import time
 import torch.nn as nn
 from utils.model_utils import get_log_path, METRICS
 
-
 class ServerBase:
     def __init__(self, args, model, seed):
         # Set up the main attributes
@@ -38,6 +37,9 @@ class ServerBase:
         self.append_acc_test_max = 0
         self.append_acc_test_iter = 0
         self.append_loss_min = 0
+        self.communication_round = []
+        self.accuracy_list = []
+        self.loss_list = []
         os.system("mkdir -p {}".format(self.save_path))
 
     # 用于包含蒸馏的算法，FedDistill,FedEnsemble,FedGen
@@ -225,6 +227,9 @@ class ServerBase:
             self.metrics['glob_acc'].append(glob_acc)
             self.metrics['glob_loss'].append(glob_loss)
         print("Average Global Accurancy = {:.4f}, Loss = {:.2f}.".format(glob_acc, glob_loss))
+        self.communication_round.append(glob_iter)
+        self.accuracy_list.append(glob_acc)
+        self.loss_list.append(glob_loss)
         if self.append_acc_test_max < glob_acc:
             self.append_acc_test_max = glob_acc
             self.append_acc_test_iter = glob_iter

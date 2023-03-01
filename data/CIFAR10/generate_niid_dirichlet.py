@@ -4,7 +4,7 @@ import random
 import json
 import os
 import argparse
-from torchvision.datasets import MNIST
+from torchvision.datasets import CIFAR10
 import torch
 from torch.utils.data import DataLoader
 import torchvision.transforms as transforms
@@ -22,10 +22,16 @@ def rearrange_data_by_class(data, targets, n_class):
 
 
 def get_dataset(mode='train'):
-    transform = transforms.Compose(
-        [transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
+    # trans = []
+    # trans.append(transforms.ToTensor())
+    # trans.append(transforms.Lambda(lambda x: x.repeat(3, 3, 1, )))
+    #         transforms.Grayscale(num_output_channels=1),
+    transform = transforms.Compose([
+        transforms.Grayscale(num_output_channels=1),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5,), (0.5,))])
 
-    dataset = MNIST(root='./data', train=True if mode == 'train' else False, download=True, transform=transform)
+    dataset = CIFAR10(root='./data', train=True if mode == 'train' else False, download=True, transform=transform)
     n_sample = len(dataset.data)
     SRC_N_CLASS = len(dataset.classes)
     # full batch
@@ -60,9 +66,9 @@ def sample_class(SRC_N_CLASS, NUM_LABELS, user_id, label_random=False):
 def devide_train_data(data, n_sample, SRC_CLASSES, NUM_USERS, min_sample, alpha=0.5, sampling_ratio=0.5):
     min_sample = 10  # len(SRC_CLASSES) * min_sample
     min_size = 0  # track minimal samples per user
-    #  Determine Sampling
+    # Determine Sampling
     while min_size < min_sample:
-        print("Try to find valid data separation")
+        print("Try to find valid data separation{},{}".format(min_size, min_sample))
         idx_batch = [{} for _ in range(NUM_USERS)]
         samples_per_user = [0 for _ in range(NUM_USERS)]
         max_samples_per_user = sampling_ratio * n_sample / NUM_USERS
@@ -88,7 +94,7 @@ def devide_train_data(data, n_sample, SRC_CLASSES, NUM_USERS, min_sample, alpha=
                 samples_per_user[u] += len(idx_batch[u][l])
         min_size = min(samples_per_user)
 
-    # CREATE USER DATA SPLIT
+    #   CREATE USER DATA SPLIT
     X = [[] for _ in range(NUM_USERS)]
     y = [[] for _ in range(NUM_USERS)]
     Labels = [set() for _ in range(NUM_USERS)]
@@ -129,9 +135,9 @@ def main():
                         choices=["pt", "json"])
     parser.add_argument("--n_class", type=int, default=10, help="number of classification labels")
     parser.add_argument("--min_sample", type=int, default=10, help="Min number of samples per user.")
-    parser.add_argument("--sampling_ratio", type=float, default=0.05, help="Ratio for sampling training samples.")
+    parser.add_argument("--sampling_ratio", type=float, default=0.5, help="Ratio for sampling training samples.")
     parser.add_argument("--unknown_test", type=int, default=0, help="Whether allow test label unseen for each user.")
-    parser.add_argument("--alpha", type=float, default=0.01,
+    parser.add_argument("--alpha", type=float, default=0.5,
                         help="alpha in Dirichelt distribution (smaller means larger heterogeneity)")
     parser.add_argument("--n_user", type=int, default=20,
                         help="number of local clients, should be muitiple of 10.")

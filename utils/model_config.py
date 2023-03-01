@@ -1,6 +1,6 @@
 CONFIGS_ = {
     # input_channel, n_class, output_dim, hidden_dim, latent_dim
-    'cifar': ([16, 'M', 32, 'M', 'F'], 3, 10, 2048, 64),
+    'cifar10': ([6, 16, 'F'], 1, 10, 1024, 32),
     'cifar100-c25': ([32, 'M', 64, 'M', 128, 'F'], 3, 25, 128, 128),
     'cifar100-c30': ([32, 'M', 64, 'M', 128, 'F'], 3, 30, 2048, 128),
     'cifar100-c50': ([32, 'M', 64, 'M', 128, 'F'], 3, 50, 2048, 128),
@@ -15,7 +15,7 @@ CONFIGS_ = {
 # temporary roundabout to evaluate sensitivity of the generator
 GENERATORCONFIGS = {
     # hidden_dimension, latent_dimension, input_channel, n_class, noise_dim
-    'cifar': (512, 32, 3, 10, 64),
+    'cifar10': (256, 32, 1, 10, 32),
     'celeb': (128, 32, 3, 2, 32),
     'mnist': (256, 32, 1, 10, 32),
     'mnist-cnn0': (256, 32, 1, 10, 64),
@@ -72,6 +72,21 @@ RUNCONFIGS = {
             'unique_labels': 2,
             'generative_alpha': 10,
             'generative_beta': 10, 
+            'weight_decay': 1e-2
+        },
+
+    'cifar10':
+        {
+            'ensemble_lr': 3e-4,
+            'ensemble_batch_size': 128,
+            'ensemble_epochs': 50,
+            'num_pretrain_iters': 20,
+            'ensemble_alpha': 1,  # teacher loss (server side)
+            'ensemble_beta': 0,  # adversarial student loss
+            'ensemble_eta': 1,  # diversity loss
+            'unique_labels': 10,  # available labels
+            'generative_alpha': 10,  # used to regulate user training
+            'generative_beta': 10,  # used to regulate user training
             'weight_decay': 1e-2
         },
 

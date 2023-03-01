@@ -158,6 +158,7 @@ class UserFedDKDGen(UserBase):
                     # user_latent_loss = generative_beta * self.ensemble_loss(user_output_logp, target_p)
                     loss_dkd = dkd_loss(logits_student, logit_given_gen, y, generative_alpha_dkd, generative_beta_dkd, self.temperature)
                     user_loss2 = generative_beta*loss_dkd
+                    # user_loss2 = loss_dkd
                     # temp = 10
                     # distillation_loss = self.soft_loss(F.softmax(student_preds / self.temperature, dim=1), F.softmax(teacher_preds/self.temperature, dim=1))
                     # 计算client的损失
